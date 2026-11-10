@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Tests et outils
+.pytest_cache/
+.coverage
+.ruff_cache/
+htmlcov/
+
+# Environnement et IDE
+.env
+.vscode/
+.idea/
+.DS_Store
