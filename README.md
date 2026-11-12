@@ -1,5 +1,5 @@
 # Projet support — calculatrice Python
-
+![CI](https://github.com/crm4784/TP_GitHub-Projects_CI-CD/actions/workflows/ci-cd.yml/badge.svg)
 Projet Python utilisé dans le TP CI. Il contient des fonctions de calcul, six tests `pytest` et un workflow GitHub Actions. Le workflow vérifie automatiquement le code ; il ne construit ni ne déploie une application.
 
 ## Lancer les tests en local
