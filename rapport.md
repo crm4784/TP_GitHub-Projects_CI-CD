@@ -52,10 +52,13 @@ Ainsi, l'événement `push` s'exécute immédiatement lors du transfert de la br
 ## Question 5 : Diagnostic de régression dans la CI
 
 ### 1. Pourquoi le test détecte-t-il la régression ?
-La fonction `add(a, b)` a été modifiée pour retourner `a - b` au lieu de `a + b`. Dans `tests/test_calculator.py`, la fonction `test_add` vérifie l'assertion de l'addition. L'expression `assert add(2, 3) == 5` échoue car `2 - 3 = -1`, ce qui est différent de la valeur attendue (`5`).
+Dans `tests/test_calculator.py` (ligne 7), l'instruction `assert add(2, 3) == 5` vérifie que le résultat de l'appel est égal à `5`. Comme la fonction `add` a été remplacée par une soustraction, `add(2, 3)` renvoie `-1`. L'assertion échoue (`AssertionError : assert -1 == 5`), ce qui fait échouer le test (`FAILED`) et renvoie le code de sortie `1`.
+
+### Le test se nomme <-pyhton->
 
 ### 2. Que vous apprend le journal que l'icône rouge ne montre pas ?
-L'icône rouge indique seulement qu'une étape a échoué. Le journal (*log*) détaillé permet de voir :
-* La commande exacte qui a provoqué l'échec (`python -m pytest -v`).
-* Le nom précis du test en échec (`tests/test_calculator.py::test_add`).
-* Les détails de l'assertion : la valeur attendue (`5`), la valeur obtenue (`-1`) et la ligne de code exacte responsable du problème dans l'application.
+L'icône rouge sur la Pull Request #1 (`test/regression-add`) signale uniquement que la vérification globale a échoué. Le journal détaillé fournit le diagnostic exact :
+* **Le bilan des tests :** 1 test en échec (`FAILED`) et 5 tests réussis (`PASSED`).
+* **Le nom exact du test fautif :** `tests/test_calculator.py::test_add` (à la ligne 7).
+* **La comparaison des valeurs :** la valeur attendue (`5`) face à la valeur réellement obtenue (`-1`).
+* **L'étape bloquante et le code d'erreur :** l'arrêt s'est produit à l'étape `Run python -m pytest -v` avec un code de sortie non nul (`exit code 1`).
