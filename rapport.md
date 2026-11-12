@@ -82,4 +82,4 @@ Un test exécuté localement est lancé manuellement par le développeur dans so
 * **Arborescence du dépôt sur GitHub :**
   *(Insérer ici ta capture d'écran de la page d'accueil du dépôt GitHub)*
 * **Évolution de la Pull Request (contrôle rouge puis contrôle vert) :**
-  *(Insérer ici ta capture d'écran de la PR #1 montrant l'échec puis la validation de la CI)*
+<img src="/img.jng" alt="capture de l'erreur " />
